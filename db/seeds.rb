@@ -5,13 +5,13 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-TEAMS_INFO = [{team_id: 1610612744, name: "Warriors"}]
+TEAMS_INFO = NbaRb::TEAMS.collect do |team, team_info|
+  {team_id: team_info["id"], name: team_info["name"]}
+end
 
 
-teams = TEAMS_INFO.collect do |team_info|
+TEAMS_INFO.each do |team_info|
   new_team = Team.create(team_id: team_info[:team_id], name: team_info[:name])
-  team_players = NbaRb::Team::CommonRoster.new(team_id: team_info[:team_id]).roster
-  team_players.each do |player|
-    new_team.players.build(name: player["PLAYER"], player_id: player["PLAYER_ID"])
-  end
+  new_team.create_roster(team_info[:team_id])
+  new_team.save
 end
