@@ -28,6 +28,7 @@ gem 'bootstrap', '~> 4.0.0.beta2.1'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
 gem 'omniauth-facebook'
+gem 'dotenv-rails'
 gem 'nba_rb', '0.2.0', github: 'FanaHOVA/nba_rb'
 # Use Unicorn as the app server
 # gem 'unicorn'

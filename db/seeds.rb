@@ -12,6 +12,7 @@ end
 
 TEAMS_INFO.each do |team_info|
   new_team = Team.create(team_id: team_info[:team_id], name: team_info[:name])
+  new_team.update_team_stats
   new_team.create_roster(team_info[:team_id])
   new_team.save
 end

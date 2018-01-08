@@ -1,7 +1,7 @@
 class WelcomeController < ApplicationController
 
   def welcome
-    binding.pry
+    # binding.pry
     render 'index.html.erb'
   end
 

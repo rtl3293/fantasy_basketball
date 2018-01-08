@@ -1,0 +1,14 @@
+<nav class="">
+    <ul>
+        <li> <%#= link_to "Home", user_path @user %> </li>
+        <% if @user %>
+          <li> Signed in as <%= @user.email %> </li>
+          <li><%= link_to "Sign out", destroy_user_session_path, :method => 'delete' %></li><br>
+        <% else %>
+          <li> <%= link_to "sign in", new_user_session_path %></li><br>
+          <li> <%= link_to "Sign up", new_user_registration_path %></li><br>
+        <% end %>
+
+        <%= flash[:notice] if flash[:notice] %>
+    </ul>
+</nav>
